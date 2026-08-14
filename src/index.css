@@ -1,0 +1,20 @@
+@import "tailwindcss";
+@import "flowbite-react/plugin/tailwindcss";
+@source "../.flowbite-react/class-list.json";
+
+@theme {
+  --font-inconsolata: Inconsolata, sans-serif;
+
+  --color-neutral-0: hsl(0, 0%, 100%);
+  --color-neutral-300: hsl(252, 6%, 83%);
+  --color-neutral-500: hsl(245, 15%, 58%);
+  --color-neutral-600: hsl(247, 27%, 25%);
+  --color-neutral-700: hsl(245, 19%, 35%);
+  --color-neutral-800: hsl(249, 49%, 15%);
+  --color-neutral-900: hsl(248, 70%, 10%);
+
+  --color-orange-500: hsl(7, 88%, 67%);
+  --color-orange-700: hsl(7, 71%, 60%);
+
+  --color-gradient: hsl(7, 86%, 67%) to hsl(0, 0%, 100%);
+}
