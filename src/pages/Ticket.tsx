@@ -7,8 +7,14 @@ import patternLines from "/public/pattern-lines.svg";
 import patternTicket from "/public/pattern-ticket.svg";
 import logoFull from "/public/logo-full.svg";
 import logoMark from "/public/logo-mark.svg";
+import { useLocation } from "react-router";
+import type {FormData} from "../pages/Home"
 
 export const Ticket = () => {
+  const location = useLocation();
+
+  const data = location.state as FormData
+
   const isDesktop = window.innerWidth >= 1024;
   const isTablet = window.innerWidth >= 768;
   return (
@@ -21,6 +27,11 @@ export const Ticket = () => {
       className="w-full min-h-screen"
     >
       <div className="max-w-220 mx-auto py-12 flex flex-col items-center">
+        <div>
+          <h1>{data.fullName}</h1>
+          <p>{data.email}</p>
+          <p>@{data.githubUsername}</p>
+        </div>
         <div className="max-w-220 mx-auto">
           <img className="w-54 pb-12 mx-auto" src={logoFull} alt="Logo" />
         </div>

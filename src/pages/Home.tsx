@@ -8,26 +8,51 @@ import patternLines from "/public/pattern-lines.svg";
 import logoFull from "/public/logo-full.svg";
 import { useState } from "react";
 import { useForm, type SubmitHandler } from "react-hook-form";
+import { useNavigate } from "react-router";
 
-type FormData = {
-  imageUpload: FileCallback | null;
+export type FormData = {
+  imageUpload: FileList | null;
   fullName: string;
   email: string;
   githubUsername: string;
 };
 
 export const Home = () => {
+  const navigate = useNavigate();
+
   const {
     register,
     handleSubmit,
-    watch,
     formState: { errors },
   } = useForm<FormData>();
 
-  const onSubmit: SubmitHandler<FormData> = (data: FormData) =>
-    console.log(data);
+  const onSubmit: SubmitHandler<FormData> = (data) => {
+    navigate("/generate", {
+      state: data,
+    });
+  };
 
-  const [image, setImage] = useState(null);
+  const imageRegister = register("imageUpload", {
+  required: "Avatar is required",
+
+  validate: {
+    fileType: (files) => {
+      const file = files?.[0];
+
+      if (!file) return true;
+
+      const allowedTypes = ["image/jpeg", "image/png"];
+
+      return (
+        allowedTypes.includes(file.type) ||
+        "Only JPG or PNG images are allowed."
+      );
+    },
+  },
+});
+
+
+  // const [image, setImage] = useState(null);
 
   function handleImageRemove() {
     setPreview("");
@@ -66,7 +91,7 @@ export const Home = () => {
         </div>
         <form
           onSubmit={handleSubmit(onSubmit)}
-          className="w-full max-w-115 md:max-w-140 lg:max-w-115 px-3 md:px-0 flex flex-col gap-6 md:gap-7"
+          className="w-full max-w-115 md:max-w-140 lg:max-w-115 px-3 md:px-0 flex flex-col gap-6"
         >
           <div className="flex flex-col items-start gap-2">
             <label
@@ -78,7 +103,8 @@ export const Home = () => {
             <div className="flex w-full items-center justify-center">
               <Label
                 htmlFor="dropzone-file"
-                className="flex h-32 w-full cursor-pointer flex-col items-center justify-center rounded-xl border-2 border-dashed border-neutral-500 bg-neutral-800 hover:bg-neutral-700 focus-within:border-3 focus-within:border-neutral-0"
+                className={`flex h-32 w-full cursor-pointer flex-col items-center justify-center rounded-xl border-2 border-dashed bg-neutral-800 hover:bg-neutral-700 focus-within:border-3 
+                  ${errors.imageUpload ? "border-orange-500 focus-within:border-orange-700y" : "border-neutral-500 focus-within:border-neutral-0"}`}
               >
                 <div className="flex flex-col items-center justify-center pb-6 pt-5">
                   {preview ? (
@@ -121,17 +147,27 @@ export const Home = () => {
                 </div>
                 <FileInput
                   id="dropzone-file"
-                  accept="image/*"
+                  accept="image/png, image/jpeg"
                   className="hidden"
-                  {...register("imageUpload")}
-                  onChange={handleImageUpload}
-                />
+                  {...imageRegister}
+                  onChange={(event) => {
+                    imageRegister.onChange(event);
+                    handleImageUpload(event);
+                  }}
+                />              
+
               </Label>
             </div>
+            
             <small className="flex gap-1 text-neutral-300">
               <IoMdInformationCircleOutline size={18} /> Upload your photo (JPG
               or PNG, max size: 500KB).
             </small>
+            {errors.imageUpload?.message && (
+                  <small className="font-medium text-sm text-orange-500">
+                    {errors.imageUpload.message}
+                  </small>
+                )}
           </div>
           <div className="flex flex-col items-start gap-2">
             <label
@@ -194,11 +230,20 @@ export const Home = () => {
               Github Username
             </label>
             <input
-              className="w-full h-13 px-4 rounded-xl border-2 text-lg transition text-neutral-0 border-neutral-500 bg-neutral-800 hover:bg-neutral-700 focus:border-3 focus:border-neutral-0"
+              {...register("githubUsername", {
+                required: "Github username is required",
+                pattern: {
+                  value: /^[a-zA-Z0-9-]{1,39}$/,
+                  message: "Enter a valid Github username."
+                }
+              })}
+              className={`w-full h-13 px-4 rounded-xl border-2 text-lg transition text-neutral-0 bg-neutral-800 hover:bg-neutral-700 focus:border-3 
+                ${errors.githubUsername ? "border-orange-500 focus:border-orange-700" : "border-neutral-500 focus:border-neutral-0"}`}
               id="github"
               type="text"
               placeholder="@yourusername"
             />
+            {errors.githubUsername?.message && <small className="font-medium text-sm text-orange-500">{errors.githubUsername.message}</small>}
           </div>
           <button
             className="w-full h-13 font-extrabold rounded-xl text-lg transition hover:cursor-pointer text-neutral-900 bg-orange-500 hover:bg-orange-700"
