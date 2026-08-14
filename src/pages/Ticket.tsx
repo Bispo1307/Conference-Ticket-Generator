@@ -8,7 +8,7 @@ import patternTicket from "/public/pattern-ticket.svg";
 import logoFull from "/public/logo-full.svg";
 import logoMark from "/public/logo-mark.svg";
 import { useLocation } from "react-router";
-import type {FormData} from "../pages/Home"
+import type { FormData } from "../pages/Home"
 
 export const Ticket = () => {
   const location = useLocation();
@@ -17,6 +17,13 @@ export const Ticket = () => {
 
   const isDesktop = window.innerWidth >= 1024;
   const isTablet = window.innerWidth >= 768;
+
+  const ticketId = Array.from({ length: 5 }, () =>
+    Math.floor(Math.random() * 10)
+  ).join("");
+
+  console.log(ticketId);
+
   return (
     <section
       style={{
@@ -27,11 +34,6 @@ export const Ticket = () => {
       className="w-full min-h-screen"
     >
       <div className="max-w-220 mx-auto py-12 flex flex-col items-center">
-        <div>
-          <h1>{data.fullName}</h1>
-          <p>{data.email}</p>
-          <p>@{data.githubUsername}</p>
-        </div>
         <div className="max-w-220 mx-auto">
           <img className="w-54 pb-12 mx-auto" src={logoFull} alt="Logo" />
         </div>
@@ -39,13 +41,13 @@ export const Ticket = () => {
           <h1 className="mx-0 md:mx-4 lg:mx-0 font-extrabold text-3xl md:text-5xl lg:text-6xl text-center text-neutral-0">
             Congrats,{" "}
             <span className="bg-linear-to-r from-orange-500 to-neutral-0 bg-clip-text text-transparent">
-              Jonatan Kristof
+              {data.fullName}
             </span>
             ! Your ticket is ready.
           </h1>
-          <h4 className="max-w-137 md:max-w-150 lg:max-w-137 mx-auto mt-6 mb-8 font-medium text-xl md:text-2xl text-center text-neutral-300">
+          <h4 className="max-w-137 md:max-w-150 mx-auto mt-6 mb-8 font-medium text-xl md:text-2xl text-center text-neutral-300">
             We've emailed your ticket to{" "}
-            <span className="text-orange-500">jonatan@email.com</span> and will
+            <span className="text-orange-500">{data.email}</span> and will
             send updates in the run up to the event.
           </h4>
         </div>
@@ -69,24 +71,24 @@ export const Ticket = () => {
           <div className="absolute bottom-4 md:bottom-8 left-8 flex items-center gap-3 md:gap-5">
             <div>
               <img
-                className="w-12 md:w-20 h-12 md:h-20 rounded-lg md:rounded-xl"
-                src={imageAvatar}
-                alt="Avatar"
+                className="w-12 md:w-20 h-12 md:h-20 object-cover rounded-lg md:rounded-xl"
+                src={data.imagePreview ? data.imagePreview : imageAvatar}
+                alt={`${data.fullName}s avatar`}
               />
             </div>
             <div>
               <h3 className="font-medium text-xl md:text-2xl text-neutral-0">
-                Jonatan Kristof
+                {data.fullName}
               </h3>
               <div className="flex items-center gap-2">
                 <FaGithubSquare className="text-neutral-0" />
-                <p className="text-neutral-300">@jonatankristof0101</p>
+                <p className="text-neutral-300">@{data.githubUsername}</p>
               </div>
             </div>
           </div>
-          <div className="absolute top-1/2 right-1 md:right-3 lg:right-2 rotate-90 -translate-y-1/2">
+          <div className="absolute top-1/2 right-1 md:right-3 lg:right-2.5 rotate-90 -translate-y-1/2">
             <span className="text-2xl md:text-3xl text-neutral-500">
-              #01609
+              #{ticketId}
             </span>
           </div>
         </div>

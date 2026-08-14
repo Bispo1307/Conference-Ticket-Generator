@@ -12,6 +12,7 @@ import { useNavigate } from "react-router";
 
 export type FormData = {
   imageUpload: FileList | null;
+  imagePreview: string;
   fullName: string;
   email: string;
   githubUsername: string;
@@ -28,7 +29,10 @@ export const Home = () => {
 
   const onSubmit: SubmitHandler<FormData> = (data) => {
     navigate("/generate", {
-      state: data,
+      state: {
+        ...data,
+        imagePreview: preview
+      },
     });
   };
 
