@@ -37,7 +37,7 @@ export const Home = () => {
   };
 
   const imageRegister = register("imageUpload", {
-  required: "Avatar is required",
+  required: "A foto de perfil é obrigatória.",
 
   validate: {
     fileType: (files) => {
@@ -49,14 +49,11 @@ export const Home = () => {
 
       return (
         allowedTypes.includes(file.type) ||
-        "Only JPG or PNG images are allowed."
+        "Apenas imagens JPG ou PNG são permitidas."
       );
     },
   },
 });
-
-
-  // const [image, setImage] = useState(null);
 
   function handleImageRemove() {
     setPreview("");
@@ -87,10 +84,10 @@ export const Home = () => {
         </div>
         <div>
           <h1 className="font-extrabold text-3xl md:text-6xl text-center text-neutral-0">
-            Your Journey to Coding Conf 2025 Starts Here!
+            Sua jornada para a Coding Conf 2025 começa aqui!
           </h1>
-          <h4 className="mt-6 mb-8 px-2 font-medium text-xl md:text-2xl text-center text-neutral-300">
-            Secure your spot at next year's biggest coding conference.
+          <h4 className="mt-6 mb-8 font-medium text-xl md:text-2xl text-center text-neutral-300">
+            Garanta sua vaga na maior conferência de programação do próximo ano.
           </h4>
         </div>
         <form
@@ -102,7 +99,7 @@ export const Home = () => {
               className="font-medium text-xl text-neutral-0"
               htmlFor="avatar"
             >
-              Upload Avatar
+              Enviar foto de perfil
             </label>
             <div className="flex w-full items-center justify-center">
               <Label
@@ -123,27 +120,27 @@ export const Home = () => {
                           onClick={handleImageRemove}
                           className="px-2.5 py-0.5 rounded-sm bg-neutral-600 hover:underline hover:cursor-pointer"
                         >
-                          Remove image
+                          Remover imagem
                         </button>
                         <Label
                           htmlFor="dropzone-file"
                           className="px-2.5 rounded-sm bg-neutral-600 hover:underline hover:cursor-pointer"
                         >
-                          Change image
+                          Alterar imagem
                         </Label>
                       </div>
                     </div>
                   ) : (
-                    <div className="flex flex-col items-center gap-2">
+                    <div className="flex flex-col items-center gap-1">
                       <button className="w-11 h-11 flex items-center justify-center rounded-xl border border-neutral-500 bg-neutral-600">
                         <FaCloudUploadAlt
                           size={26}
                           className="text-orange-500"
                         />
                       </button>
-                      <p className="text-lg text-neutral-300">
+                      <p className="px-4 text-lg text-center text-neutral-300">
                         <span className="font-bold">
-                          Drag and drop or click to upload
+                          Arraste e solte ou clique para fazer o upload
                         </span>
                       </p>
                     </div>
@@ -164,8 +161,8 @@ export const Home = () => {
             </div>
             
             <small className="flex gap-1 text-neutral-300">
-              <IoMdInformationCircleOutline size={18} /> Upload your photo (JPG
-              or PNG, max size: 500KB).
+              <IoMdInformationCircleOutline size={18} /> Envie sua foto (JPG
+              ou PNG, tamanho máximo: 500 KB).
             </small>
             {errors.imageUpload?.message && (
                   <small className="font-medium text-sm text-orange-500">
@@ -178,21 +175,21 @@ export const Home = () => {
               className="font-medium text-xl text-neutral-0"
               htmlFor="fullName"
             >
-              Full Name
+              Nome Completo
             </label>
             <input
               {...register("fullName", {
-                required: "Full name is required",
+                required: "O nome completo é obrigatório.",
                 minLength: {
                   value: 3,
-                  message: "Must be at leasted 3 characters",
+                  message: "Deve ter pelo menos 3 caracteres",
                 },
               })}
               className={`w-full h-13 px-4 rounded-xl border-2 text-lg transition text-neutral-0  bg-neutral-800 hover:bg-neutral-700 focus:border-3 
                 ${errors.fullName ? "border-orange-500 focus:border-orange-700" : "border-neutral-500 focus:border-neutral-0"}`}
               id="fullName"
               type="text"
-              placeholder="Jonatan Kristof"
+              placeholder="Lucas Silva"
             />
             {errors.fullName?.message && (
               <small className="font-medium text-sm text-orange-500">
@@ -205,20 +202,20 @@ export const Home = () => {
               className="font-medium text-xl text-neutral-0"
               htmlFor="email"
             >
-              Email Address
+              Endereço de Email
             </label>
             <input
               {...register("email", {
-                required: "Email is required",
+                required: "O e-mail é obrigatório.",
                 pattern: {
                   value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
-                  message: "Enter a valid email format. (ex: test@test.com).",
+                  message: "Insira um formato de e-mail válido (ex: teste@teste.com).",
                 },
               })}
               className={`w-full h-13 px-4 rounded-xl border-2 text-lg transition text-neutral-0 border-neutral-500 bg-neutral-800 hover:bg-neutral-700 focus:border-3 focus:border-neutral-0 ${errors.fullName ? "border-orange-500 focus:border-orange-700" : "border-neutral-500 focus:border-neutral-0"}`}
               id="email"
               type="email"
-              placeholder="example@gmail.com"
+              placeholder="exemplo@gmail.com"
             />
             {errors.email?.message && (
               <small className="font-medium text-sm text-orange-500">
@@ -231,21 +228,21 @@ export const Home = () => {
               className="font-medium text-xl text-neutral-0"
               htmlFor="github"
             >
-              Github Username
+              Usuário do Github
             </label>
             <input
               {...register("githubUsername", {
-                required: "Github username is required",
+                required: "O nome de usuário do GitHub é obrigatório.",
                 pattern: {
                   value: /^[a-zA-Z0-9-]{1,39}$/,
-                  message: "Enter a valid Github username."
+                  message: "Insira um nome de usuário do GitHub válido."
                 }
               })}
               className={`w-full h-13 px-4 rounded-xl border-2 text-lg transition text-neutral-0 bg-neutral-800 hover:bg-neutral-700 focus:border-3 
                 ${errors.githubUsername ? "border-orange-500 focus:border-orange-700" : "border-neutral-500 focus:border-neutral-0"}`}
               id="github"
               type="text"
-              placeholder="@yourusername"
+              placeholder="@seunomedeusuario"
             />
             {errors.githubUsername?.message && <small className="font-medium text-sm text-orange-500">{errors.githubUsername.message}</small>}
           </div>
@@ -253,7 +250,7 @@ export const Home = () => {
             className="w-full h-13 font-extrabold rounded-xl text-lg transition hover:cursor-pointer text-neutral-900 bg-orange-500 hover:bg-orange-700"
             type="submit"
           >
-            Generate My Ticket
+            Gerar Meu Ingresso
           </button>
         </form>
       </div>

@@ -39,16 +39,15 @@ export const Ticket = () => {
         </div>
         <div>
           <h1 className="mx-0 md:mx-4 lg:mx-0 font-extrabold text-3xl md:text-5xl lg:text-6xl text-center text-neutral-0">
-            Congrats,{" "}
+            Parabéns,{" "}
             <span className="bg-linear-to-r from-orange-500 to-neutral-0 bg-clip-text text-transparent">
-              {data.fullName}
+              {data.fullName ? data.fullName : "Lucas Silva"}
             </span>
-            ! Your ticket is ready.
+            ! Seu ingresso está pronto.
           </h1>
           <h4 className="max-w-137 md:max-w-150 mx-auto mt-6 mb-8 font-medium text-xl md:text-2xl text-center text-neutral-300">
-            We've emailed your ticket to{" "}
-            <span className="text-orange-500">{data.email}</span> and will
-            send updates in the run up to the event.
+            Enviamos seu ingresso por e-mail para{" "}
+            <span className="text-orange-500">{data.email ? data.email : "teste@teste.com"}</span> e enviaremos atualizações no período que antecede o evento.
           </h4>
         </div>
         <div className="w-full relative max-w-150 px-3">
@@ -73,16 +72,16 @@ export const Ticket = () => {
               <img
                 className="w-12 md:w-20 h-12 md:h-20 object-cover rounded-lg md:rounded-xl"
                 src={data.imagePreview ? data.imagePreview : imageAvatar}
-                alt={`${data.fullName}s avatar`}
+                alt={`${data.fullName ? data.fullName : "Lucas Silva"}s avatar`}
               />
             </div>
             <div>
               <h3 className="font-medium text-xl md:text-2xl text-neutral-0">
-                {data.fullName}
+                {data.fullName ? data.fullName : "Lucas Silva"}
               </h3>
               <div className="flex items-center gap-2">
                 <FaGithubSquare className="text-neutral-0" />
-                <p className="text-neutral-300">@{data.githubUsername}</p>
+                <p className="text-neutral-300">@{data.githubUsername ? data.githubUsername : "LucasDev"}</p>
               </div>
             </div>
           </div>

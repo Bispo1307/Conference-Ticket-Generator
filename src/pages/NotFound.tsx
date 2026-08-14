@@ -27,13 +27,13 @@ export const NotFound = () => {
           </span>
         </h1>
         <h2 className="max-w-137 mx-auto mt-3 mb-8 font-medium text-4xl text-center text-neutral-300">
-          Page Not Found
+          Página não encontrada
         </h2>
         <Link
           className="mt-10 py-1 px-5 font-extrabold rounded-lg text-xl transition text-neutral-900 bg-orange-500 hover:bg-orange-700"
           to={"/"}
         >
-          Go to page Home
+          Ir para a página inicial
         </Link>
       </div>
     </section>
