@@ -40,13 +40,8 @@ export const Ticket = () => {
         <div>
           <h1 className="mx-0 md:mx-4 lg:mx-0 font-extrabold text-3xl md:text-5xl lg:text-6xl text-center text-neutral-0">
             Parabéns,{" "}
-            <span
-              className="bg-clip-text text-transparent"
-              style={{
-                backgroundImage: "linear-gradient(to right, #f57261, #ffffff)",
-              }}
-            >
-              {data.fullName || "Lucas Silva"}
+            <span className="text-orange-500">
+              {data.fullName ? data.fullName : "Lucas Silva"}
             </span>
             ! Seu ingresso está pronto.
           </h1>
