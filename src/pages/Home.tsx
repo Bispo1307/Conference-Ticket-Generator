@@ -83,10 +83,10 @@ export const Home = () => {
           <img className="w-54 pb-12 mx-auto" src={logoFull} alt="Logo" />
         </div>
         <div>
-          <h1 className="font-extrabold text-3xl md:text-6xl text-center text-neutral-0">
+          <h1 className="px-2 md:px-8 lg:px-0 font-extrabold text-2xl md:text-5xl lg:text-6xl text-center text-neutral-0">
             Sua jornada para a Coding Conf 2025 começa aqui!
           </h1>
-          <h4 className="mt-6 mb-8 font-medium text-xl md:text-2xl text-center text-neutral-300">
+          <h4 className="px-2 md:px-0 mt-4 mb-8 font-medium text-lg lg:text-2xl text-center text-neutral-300">
             Garanta sua vaga na maior conferência de programação do próximo ano.
           </h4>
         </div>

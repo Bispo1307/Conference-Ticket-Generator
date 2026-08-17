@@ -38,23 +38,23 @@ export const Ticket = () => {
           <img className="w-54 pb-12 mx-auto" src={logoFull} alt="Logo" />
         </div>
         <div>
-          <h1 className="mx-0 md:mx-4 lg:mx-0 font-extrabold text-3xl md:text-5xl lg:text-6xl text-center text-neutral-0">
+          <h1 className="px-2 md:px-0 mx-0 md:mx-6 lg:mx-0 font-extrabold text-2xl md:text-5xl lg:text-6xl text-center text-neutral-0">
             Parabéns,{" "}
             <span className="text-orange-500">
               {data.fullName ? data.fullName : "Lucas Silva"}
             </span>
             ! Seu ingresso está pronto.
           </h1>
-          <h4 className="max-w-137 md:max-w-150 mx-auto mt-6 mb-8 font-medium text-xl md:text-2xl text-center text-neutral-300">
+          <h4 className="px-2 md:px-0 max-w-137 md:max-w-150 mx-auto mt-4 mb-8 font-medium text-xl md:text-2xl text-center text-neutral-300">
             Enviamos seu ingresso por e-mail para{" "}
             <span className="text-orange-500">{data.email ? data.email : "teste@teste.com"}</span> e enviaremos atualizações no período que antecede o evento.
           </h4>
         </div>
-        <div className="w-full relative max-w-150 px-3">
+        <div className="px-2 md:px-0 w-full relative max-w-150">
           <div className="w-full">
             <img src={patternTicket} alt="Ticket" />
           </div>
-          <div className="absolute top-4 md:top-8 left-8">
+          <div className="absolute top-4 md:top-8 left-6">
             <div>
               <div className="flex items-center gap-3 md:gap-4">
                 <img className="w-8 h-8" src={logoMark} alt="Logo" />
@@ -67,7 +67,7 @@ export const Ticket = () => {
               Jan 31, 2025 / Austin, TX
             </div>
           </div>
-          <div className="absolute bottom-4 md:bottom-8 left-8 flex items-center gap-3 md:gap-5">
+          <div className="absolute bottom-4 md:bottom-8 left-6 flex items-center gap-3 md:gap-5">
             <div>
               <img
                 className="w-12 md:w-20 h-12 md:h-20 object-cover rounded-lg md:rounded-xl"
