@@ -40,7 +40,7 @@ export const Ticket = () => {
         <div>
           <h1 className="mx-0 md:mx-4 lg:mx-0 font-extrabold text-3xl md:text-5xl lg:text-6xl text-center text-neutral-0">
             Parabéns,{" "}
-            <span className="bg-linear-to-r from-orange-500 to-neutral-0 bg-clip-text text-transparent">
+            <span className="bg-linear-to-r from-orange-500 to-white bg-clip-text text-transparent">
               {data.fullName ? data.fullName : "Lucas Silva"}
             </span>
             ! Seu ingresso está pronto.
