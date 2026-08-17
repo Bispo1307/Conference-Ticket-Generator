@@ -22,13 +22,10 @@ export const NotFound = () => {
           <img className="w-54 pb-12 mx-auto" src={logoFull} alt="Logo" />
         </div>
         <h1 className="mt-6 font-extrabold text-9xl text-center text-neutral-0">
-          {/* <span className="bg-linear-to-r from-orange-500 to-white bg-clip-text text-transparent">
-            404
-          </span> */}
           <span
             className="text-transparent bg-clip-text"
             style={{
-              backgroundImage: "linear-gradient(to right, #f97316, #ffffff)",
+              backgroundImage: "linear-gradient(to right, #f57261, #ffffff)",
             }}
           >
             404
