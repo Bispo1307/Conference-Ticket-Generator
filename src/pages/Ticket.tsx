@@ -8,18 +8,18 @@ import patternTicket from "/public/pattern-ticket.svg";
 import logoFull from "/public/logo-full.svg";
 import logoMark from "/public/logo-mark.svg";
 import { useLocation } from "react-router";
-import type { FormData } from "../pages/Home"
+import type { FormData } from "../pages/Home";
 
 export const Ticket = () => {
   const location = useLocation();
 
-  const data = location.state as FormData
+  const data = location.state as FormData;
 
   const isDesktop = window.innerWidth >= 1024;
   const isTablet = window.innerWidth >= 768;
 
   const ticketId = Array.from({ length: 5 }, () =>
-    Math.floor(Math.random() * 10)
+    Math.floor(Math.random() * 10),
   ).join("");
 
   console.log(ticketId);
@@ -47,7 +47,10 @@ export const Ticket = () => {
           </h1>
           <h4 className="px-2 md:px-0 max-w-137 md:max-w-150 mx-auto mt-4 mb-8 font-medium text-xl md:text-2xl text-center text-neutral-300">
             Enviamos seu ingresso por e-mail para{" "}
-            <span className="text-orange-500">{data.email ? data.email : "teste@teste.com"}</span> e enviaremos atualizações no período que antecede o evento.
+            <span className="text-orange-500">
+              {data.email ? data.email : "teste@teste.com"}
+            </span>{" "}
+            e enviaremos atualizações no período que antecede o evento.
           </h4>
         </div>
         <div className="px-2 md:px-0 w-full relative max-w-150">
@@ -81,12 +84,14 @@ export const Ticket = () => {
               </h3>
               <div className="flex items-center gap-2">
                 <FaGithubSquare className="text-neutral-0" />
-                <p className="text-neutral-300">@{data.githubUsername ? data.githubUsername : "LucasDev"}</p>
+                <p className="text-neutral-300">
+                  @{data.githubUsername ? data.githubUsername : "LucasDev"}
+                </p>
               </div>
             </div>
           </div>
-          <div className="absolute top-1/2 right-1 md:right-3 lg:right-2.5 rotate-90 -translate-y-1/2">
-            <span className="text-2xl md:text-3xl text-neutral-500">
+          <div className="absolute top-1/2 right-1 md:right-3 lg:right-0 rotate-90 -translate-y-1/2">
+            <span className="text-2xl md:text-3xl lg:text-4xl text-neutral-500">
               #{ticketId}
             </span>
           </div>
